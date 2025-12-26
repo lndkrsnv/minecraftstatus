@@ -3,8 +3,8 @@ spring:
     name: minecraftstatus
 
 server:
-  port: 8080
+  port: 18888
 
 logging:
   level:
-    com.example: DEBUG
+    com.lndkrsnv: DEBUG

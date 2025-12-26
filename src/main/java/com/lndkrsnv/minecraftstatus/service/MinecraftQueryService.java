@@ -1,5 +1,7 @@
 package com.lndkrsnv.minecraftstatus.service;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.tekgator.queryminecraftserver.api.Protocol;
 import com.tekgator.queryminecraftserver.api.QueryStatus;
 import com.tekgator.queryminecraftserver.api.Status;
@@ -22,6 +24,11 @@ public class MinecraftQueryService {
                 .build();
 
         Status status = queryStatus.getStatus();
-        return status.toJson();
+        String fullJson = status.toJson();
+
+        JsonObject jsonObject = JsonParser.parseString(fullJson).getAsJsonObject();
+        jsonObject.remove("favicon");
+
+        return jsonObject.toString();
     }
 }
