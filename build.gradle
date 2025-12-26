@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.0.1'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.lndkrsnv'
+version = '0.0.2-SNAPSHOT'
+description = 'Mini service for getting info'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-web') {
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
+	implementation 'com.github.tekgator:JAVA-QueryMinecraftServer:1.2'
+	implementation 'com.google.code.gson:gson:2.10.1'
+
+	implementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test { failOnNoDiscoveredTests = false }
+
+configurations {
+	all {
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
+}
